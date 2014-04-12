@@ -100,7 +100,7 @@ public class SQLDroidResultSet implements ResultSet {
   public int findColumn(String columnName) throws SQLException {
     try {
       // JDBC style column index starts from 1; Android database cursor has zero-based index
-      return (c.getColumnIndexOrThrow(columnName) + 1);  
+      return (c.getColumnIndex(columnName) + 1);  
     } catch (android.database.SQLException e) {
       throw SQLDroidConnection.chainException(e);
     }
