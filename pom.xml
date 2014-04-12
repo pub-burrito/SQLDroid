@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sqldroid</groupId>
 	<artifactId>sqldroid</artifactId>
-	<version>1.0.0.RC11-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>apklib</packaging>
 
 	<properties>
@@ -13,6 +13,17 @@
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
+	
+	<distributionManagement>
+		<repository>
+			<id>cloud.archiva.internal</id>
+			<url>http://archiva.cliff.cloudburrito.com:8080/archiva/repository/internal/</url>
+		</repository>
+		<snapshotRepository>
+			<id>cloud.archiva.snapshots</id>
+			<url>http://archiva.cliff.cloudburrito.com:8080/archiva/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -40,7 +51,7 @@
 			<plugin>
                 <artifactId>android-maven-plugin</artifactId>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                <version>3.6.0</version>
+                <version>3.8.1-SNAPSHOT</version>
                 <extensions>true</extensions>
                 <configuration>
                 	<sdk>
@@ -56,6 +67,70 @@
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<configuration>
+							<includes>
+				        		<include>org/sqldroid/*</include>
+				        	</includes>
+						</configuration>
+					</execution>
+					<execution>
+						<id>compat-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<classifier>compat</classifier>
+							<includes>
+				        		<include>android/**/*</include>
+				        	</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>build-helper-maven-plugin</artifactId>
+		        <version>1.8</version>
+		
+		        <executions>
+					<execution>
+					    <id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>compat</source>
+							</sources>
+						</configuration>
+					</execution>
+		
+					<execution>
+		        	  <id>attach-jar</id>
+		        	  <phase>package</phase>
+		        	  <goals>
+		        	    <goal>attach-artifact</goal>
+		        	  </goals>
+		        	  <configuration>
+		        	    <artifacts>
+		       	    	  <artifact>
+		        	        <file>${project.build.directory}/${project.build.finalName}.jar</file>
+		        	        <type>jar</type>
+		        	      </artifact>
+		        	    </artifacts>
+		        	  </configuration>
+		        	</execution>			
+		        </executions>
+		      </plugin>
 		</plugins>
 	</build>
 
