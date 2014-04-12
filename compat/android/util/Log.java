@@ -10,6 +10,13 @@ import org.apache.log4j.Logger;
 
 public class Log {
 
+  public static final int VERBOSE = 2;
+  public static final int DEBUG = 3;
+  public static final int INFO = 4;
+  public static final int WARN = 5;
+  public static final int ERROR = 6;
+  public static final int ASSERT = 7;
+  
   public static void i(String string, String sql) {
     Logger.getLogger(Log.class).info(string + ":" + sql);    
   }
@@ -22,6 +29,10 @@ public class Log {
     Logger.getLogger(Log.class).error(string + ":" + sql);    
   }
 
+  public static void e(String string, String sql, Throwable error) {
+	  Logger.getLogger(Log.class).error(string + ":" + sql, error);    
+  }
+  
   public static void d(String string, String sql) {
     Logger.getLogger(Log.class).debug(string + ":" + sql);    
   }
