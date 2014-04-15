@@ -24,6 +24,9 @@ public class SQLiteDatabase {
   public static final int SQLITE_OPEN_CREATE=0x00000004;  /* Ok for sqlite3_open_v2() */
   public static final int NO_LOCALIZED_COLLATORS = 0x00000010;  /* Here for compatibility. */
 
+  public abstract static interface CursorFactory {
+  }
+  
   /** The JNA pointer to the native database. */
   protected Pointer pDb;
 
@@ -35,7 +38,7 @@ public class SQLiteDatabase {
     return pDb != null;
   }
 
-  public static SQLiteDatabase openDatabase(String dbQname, Object object, int i) throws SQLiteException {
+  public static SQLiteDatabase openDatabase(String dbQname, CursorFactory object, int i) throws SQLiteException {
     //SQLite.
     final PointerByReference ppDb = new PointerByReference();
     //SQLite.sqlite3_db_filename(null, dbQname);

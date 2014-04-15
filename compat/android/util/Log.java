@@ -17,28 +17,34 @@ public class Log {
   public static final int ERROR = 6;
   public static final int ASSERT = 7;
   
-  public static void i(String string, String sql) {
-    Logger.getLogger(Log.class).info(string + ":" + sql);    
+  public static int i(String string, String sql) {
+    Logger.getLogger(Log.class).info(string + ":" + sql);
+    return 0;
   }
 
-  public static void v(String string, String sql) {
-    Logger.getLogger(Log.class).debug(string + ":" + sql);    
+  public static int v(String string, String sql) {
+    Logger.getLogger(Log.class).debug(string + ":" + sql);
+    return 0;
   }
 
-  public static void e(String string, String sql) {
+  public static int e(String string, String sql) {
     Logger.getLogger(Log.class).error(string + ":" + sql);    
+    return 0;
   }
 
-  public static void e(String string, String sql, Throwable error) {
-	  Logger.getLogger(Log.class).error(string + ":" + sql, error);    
+  public static int e(String string, String sql, Throwable error) {
+	  Logger.getLogger(Log.class).error(string + ":" + sql, error);  
+	  return 0;
   }
   
-  public static void d(String string, String sql) {
+  public static int d(String string, String sql) {
     Logger.getLogger(Log.class).debug(string + ":" + sql);    
+    return 0;
   }
 
-  public static void e(String string, String string2, Exception e) {
+  public static int e(String string, String string2, Exception e) {
     Logger.getLogger(Log.class).error(string + ":" + string2, e);
+    return 0;
   }
 
 }
