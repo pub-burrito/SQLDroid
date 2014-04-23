@@ -8,7 +8,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<android.platform>2.3.3</android.platform>
+		<android.platform>4.1.1.4</android.platform>
 		<android.apilevel>10</android.apilevel>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
