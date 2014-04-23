@@ -228,8 +228,8 @@ public class MergeCursor implements Cursor {
    * 
    * @see android.database.Cursor#requery()
    */
-  public void requery() {
-    moveToFirst();  // not right, but not interesting.
+  public boolean requery() {
+    return moveToFirst();  // not right, but not interesting.
   }
 
   /**

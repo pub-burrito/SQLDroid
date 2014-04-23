@@ -137,8 +137,8 @@ public class MatrixCursor implements Cursor {
   }
 
   @Override
-  public void requery() {
-
+  public boolean requery() {
+	  return false;
   }
 
   @Override

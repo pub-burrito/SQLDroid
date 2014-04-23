@@ -52,7 +52,7 @@ public interface Cursor {
 
   public boolean isLast();
 
-  public void requery();
+  public boolean requery();
 
   public boolean isNull(int ci);
 

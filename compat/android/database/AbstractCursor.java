@@ -150,8 +150,8 @@ public class AbstractCursor implements Cursor {
     return (currentPosition >= 0 && currentPosition == getCount()-1);
   }
 
-  public void requery() {
-    moveToFirst(); // not quite right, but close enough    
+  public boolean requery() {
+    return moveToFirst(); // not quite right, but close enough    
   }
 
   public boolean isNull(int ci) {
