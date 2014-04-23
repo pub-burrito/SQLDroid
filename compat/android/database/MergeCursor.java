@@ -6,6 +6,9 @@
  */
 package android.database;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 public class MergeCursor implements Cursor {
 
   /** The array of cursors. */
@@ -129,7 +132,7 @@ public class MergeCursor implements Cursor {
    * @return
    * @see android.database.Cursor#getShort(int)
    */
-  public byte getShort(int ci) {
+  public short getShort(int ci) {
     return currentCursor.getShort(ci);
   }
 
@@ -164,6 +167,7 @@ public class MergeCursor implements Cursor {
    * @return
    * @see android.database.Cursor#getType(int)
    */
+  @TargetApi( Build.VERSION_CODES.HONEYCOMB )
   public int getType(int ci) {
     return currentCursor.getType(ci);
   }

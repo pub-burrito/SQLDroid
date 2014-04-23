@@ -96,8 +96,8 @@ public class MatrixCursor implements Cursor {
   }
 
   @Override
-  public byte getShort(int ci) {
-    return (byte)getInt(ci);
+  public short getShort(int ci) {
+    return (short)getInt(ci);
   }
 
   @Override

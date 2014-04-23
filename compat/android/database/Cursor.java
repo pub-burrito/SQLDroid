@@ -34,7 +34,7 @@ public interface Cursor {
 
   public byte[] getBlob(int ci);
 
-  public byte getShort(int ci);
+  public short getShort(int ci);
 
   public double getDouble(int ci);
 
