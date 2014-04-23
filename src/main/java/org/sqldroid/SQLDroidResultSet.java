@@ -327,8 +327,8 @@ public class SQLDroidResultSet implements ResultSet {
 
   @Override
   public int getFetchSize() throws SQLException {
-    System.err.println(" ********************* not implemented @ " + DebugPrinter.getFileName() + " line " + DebugPrinter.getLineNumber());
-    return 0;
+    //System.err.println(" ********************* not implemented @ " + DebugPrinter.getFileName() + " line " + DebugPrinter.getLineNumber());
+    return c.getCount();
   }
 
   @Override
